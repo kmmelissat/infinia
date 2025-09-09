@@ -12,7 +12,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTagline, setCurrentTagline] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
+
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,6 @@ const Hero = () => {
     // Initial setup - hide all elements
     gsap.set(
       [
-        badgeRef.current,
         titleRef.current,
         subtitleRef.current,
         ctaRef.current,
@@ -46,22 +45,16 @@ const Hero = () => {
     );
 
     // Animate entrance sequence
-    tl.to(badgeRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-    })
-      .to(
-        titleRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.3"
-      )
+    tl.to(
+      titleRef.current,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      },
+      "-=0.3"
+    )
       .to(
         subtitleRef.current,
         {
@@ -175,14 +168,35 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden">
         {/* Interactive Particles */}
         <div ref={particlesRef} className="absolute inset-0">
-          {Array.from({ length: 20 }).map((_, i) => (
+          {[
+            { left: 15, top: 25, delay: 0.2 },
+            { left: 85, top: 15, delay: 0.8 },
+            { left: 25, top: 75, delay: 1.2 },
+            { left: 75, top: 85, delay: 0.5 },
+            { left: 45, top: 35, delay: 1.5 },
+            { left: 65, top: 55, delay: 0.3 },
+            { left: 35, top: 65, delay: 1.8 },
+            { left: 55, top: 25, delay: 0.7 },
+            { left: 20, top: 50, delay: 1.1 },
+            { left: 80, top: 70, delay: 0.4 },
+            { left: 10, top: 80, delay: 1.6 },
+            { left: 90, top: 40, delay: 0.9 },
+            { left: 40, top: 10, delay: 1.3 },
+            { left: 60, top: 90, delay: 0.6 },
+            { left: 30, top: 45, delay: 1.9 },
+            { left: 70, top: 20, delay: 0.1 },
+            { left: 50, top: 80, delay: 1.4 },
+            { left: 15, top: 60, delay: 0.8 },
+            { left: 85, top: 30, delay: 1.7 },
+            { left: 25, top: 15, delay: 1.0 },
+          ].map((particle, i) => (
             <div
               key={i}
               className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full parallax-element"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                animationDelay: `${particle.delay}s`,
               }}
             />
           ))}
@@ -428,7 +442,277 @@ const Hero = () => {
                   </svg>
                 </div>
 
-                {/* Connecting Lines */}
+                {/* TypeScript Icon */}
+                <div
+                  className="absolute top-4 left-32 w-14 h-14 backdrop-blur-md bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-blue-600/20 parallax-element"
+                  style={{ animationDelay: "0.8s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.15,
+                      rotation: -5,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-7 h-7 text-blue-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z" />
+                  </svg>
+                </div>
+
+                {/* Next.js Icon */}
+                <div
+                  className="absolute bottom-8 left-8 w-16 h-16 backdrop-blur-md bg-gray-800/30 border border-gray-600/40 rounded-2xl flex items-center justify-center animate-pulse shadow-lg shadow-gray-800/20 parallax-reverse"
+                  style={{ animationDelay: "1.2s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      rotation: 5,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M11.5725 0c-.1763 0-.3098.0013-.3584.0067-.0516.0053-.2159.021-.3636.0328-3.4088.3073-6.6017 2.1463-8.624 4.9728C1.1004 6.584.3802 8.3666.1082 10.255c-.0962.659-.108.8537-.108 1.7474s.012 1.0884.108 1.7476c.652 4.506 3.8591 8.2919 8.2087 9.6945.7789.2511 1.6.4223 2.5337.5255.3636.04 1.9354.04 2.299 0 1.6117-.1783 2.9772-.577 4.3237-1.2643.2065-.1056.2464-.1337.2183-.1573-.0188-.0139-.8987-1.1938-1.9543-2.62l-1.919-2.592-2.4047-3.5583c-1.3231-1.9564-2.4117-3.556-2.4211-3.556-.0094-.0026-.0187 1.5787-.0235 3.509-.0067 3.3802-.0093 3.5162-.0516 3.596-.061.115-.108.1618-.2064.2134-.075.0374-.1408.0445-.495.0445h-.406l-.1078-.068a.4383.4383 0 01-.1572-.1712l-.0493-.1056.0053-4.703.0067-4.7054.0726-.0915c.0376-.0493.1174-.1125.1736-.143.0962-.047.1338-.0517.5396-.0517.4787 0 .5584.0187.6827.1547.0353.0377 1.3373 1.9987 2.895 4.3608a10760.433 10760.433 0 004.7344 7.1706l1.9002 2.8782.096-.0633c.8518-.5536 1.7525-1.3418 2.4657-2.1627 1.5179-1.7429 2.4963-3.868 2.8247-6.134.0961-.6591.1078-.8538.1078-1.7475 0-.8937-.012-1.0884-.1078-1.7476-.6522-4.506-3.8592-8.2919-8.2087-9.6945C13.1595.2361 12.3404.0649 11.5725 0z" />
+                  </svg>
+                </div>
+
+                {/* Docker Icon */}
+                <div
+                  className="absolute top-40 right-8 w-15 h-15 backdrop-blur-md bg-blue-400/20 border border-blue-300/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-blue-400/20 parallax-element"
+                  style={{ animationDelay: "1.8s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.2,
+                      rotation: -10,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-8 h-8 text-blue-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z" />
+                  </svg>
+                </div>
+
+                {/* AWS Icon */}
+                <div
+                  className="absolute bottom-32 right-8 w-14 h-14 backdrop-blur-md bg-yellow-500/20 border border-yellow-400/30 rounded-2xl flex items-center justify-center animate-pulse shadow-lg shadow-yellow-500/20 parallax-reverse"
+                  style={{ animationDelay: "2.5s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.15,
+                      rotation: 8,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-7 h-7 text-yellow-400"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M6.763 10.036c0 .296.032.535.088.718a4.678 4.678 0 00.256.718c.04.08.056.162.056.242 0 .118-.064.2-.193.2-.096 0-.193-.040-.29-.117a3.379 3.379 0 01-.602-.795A4.423 4.423 0 015.89 9.712a4.836 4.836 0 01-.193-1.416c0-.493.064-.926.18-1.22.12-.32.285-.590.49-.83.22-.24.456-.42.733-.52.265-.1.548-.16.863-.16.653 0 1.006.248 1.006.69 0 .174-.056.31-.168.42-.112.11-.24.17-.38.17-.118 0-.216-.04-.29-.11a.402.402 0 01-.118-.29c0-.11.024-.21.088-.31.056-.08.12-.17.18-.26.04-.06.056-.13.056-.2 0-.15-.15-.22-.35-.22-.216 0-.415.07-.583.2-.168.13-.31.29-.415.48-.118.19-.193.4-.242.64-.048.24-.08.49-.08.75zm2.24 2.706c0 .616.098 1.08.29 1.388.18.31.454.465.78.465.216 0 .406-.048.573-.15.168-.1.31-.24.415-.42.118-.18.193-.38.242-.62.048-.24.08-.49.08-.75 0-.616-.098-1.08-.29-1.388-.18-.31-.454-.465-.78-.465-.216 0-.406.048-.573.15-.168.1-.31.24-.415.42-.118.18-.193.38-.242.62-.048.24-.08.49-.08.75zm-.29-.002c0-.318.024-.614.088-.888.056-.274.15-.513.265-.718.12-.205.275-.365.456-.48.18-.118.4-.178.65-.178.48 0 .853.19 1.108.57.256.38.402.916.402 1.608 0 .318-.024.614-.088.888-.056.274-.15.513-.265.718-.12.205-.275.365-.456.48-.18.118-.4.178-.65.178-.48 0-.853-.19-1.108-.57-.256-.38-.402-.916-.402-1.608zm8.506-2.618c.24 0 .402.08.504.226.096.15.15.34.15.58v3.24c0 .15-.04.27-.104.334-.064.064-.15.096-.25.096s-.19-.032-.25-.096c-.064-.064-.104-.184-.104-.334v-.5c-.118.284-.29.507-.52.67-.216.163-.475.244-.78.244-.618 0-1.108-.19-1.47-.57-.36-.38-.544-.916-.544-1.608 0-.692.184-1.228.544-1.608.362-.38.852-.57 1.47-.57.305 0 .564.081.78.244.23.163.402.386.52.67v-.5c0-.15.04-.27.104-.334.064-.064.15-.096.25-.096zm-.618 2.292c0-.616-.098-1.08-.29-1.388-.18-.31-.454-.465-.78-.465-.216 0-.406.048-.573.15-.168.1-.31.24-.415.42-.118.18-.193.38-.242.62-.048.24-.08.49-.08.75 0 .616.098 1.08.29 1.388.18.31.454.465.78.465.216 0 .406-.048.573-.15.168-.1.31-.24.415-.42.118-.18.193-.38.242-.62.048-.24.08-.49.08-.75zm2.24 1.388c.118.15.275.226.456.226.118 0 .23-.032.334-.096.104-.064.2-.15.29-.258l.193.15c.064.048.096.118.096.193 0 .104-.064.2-.193.29-.13.088-.275.15-.435.193-.16.04-.32.064-.48.064-.618 0-1.108-.19-1.47-.57-.36-.38-.544-.916-.544-1.608 0-.692.184-1.228.544-1.608.362-.38.852-.57 1.47-.57.305 0 .564.081.78.244.23.163.402.386.52.67v-.5c0-.15.04-.27.104-.334.064-.064.15-.096.25-.096s.19.032.25.096c.064.064.104.184.104.334v3.24c0 .15-.04.27-.104.334-.064.064-.15.096-.25.096s-.19-.032-.25-.096c-.064-.064-.104-.184-.104-.334v-.5c-.118.284-.29.507-.52.67-.216.163-.475.244-.78.244-.305 0-.564-.081-.78-.244-.23-.163-.402-.386-.52-.67zm.618-.096c0 .616.098 1.08.29 1.388.18.31.454.465.78.465.216 0 .406-.048.573-.15.168-.1.31-.24.415-.42.118-.18.193-.38.242-.62.048-.24.08-.49.08-.75 0-.616-.098-1.08-.29-1.388-.18-.31-.454-.465-.78-.465-.216 0-.406.048-.573.15-.168.1-.31.24-.415.42-.118.18-.193.38-.242.62-.048.24-.08.49-.08.75z" />
+                  </svg>
+                </div>
+
+                {/* GraphQL Icon */}
+                <div
+                  className="absolute top-12 right-1/3 w-13 h-13 backdrop-blur-md bg-pink-600/20 border border-pink-500/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-pink-600/20 parallax-element"
+                  style={{ animationDelay: "3s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      rotation: -8,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-7 h-7 text-pink-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14.051 2.751l4.935 2.85c.816.471 1.32 1.341 1.32 2.278v5.702c0 .937-.504 1.807-1.32 2.278l-4.935 2.85c-.816.471-1.821.471-2.637 0L6.514 15.86c-.816-.471-1.32-1.341-1.32-2.278V7.88c0-.937.504-1.807 1.32-2.278L11.449 2.75c.816-.471 1.821-.471 2.637 0z" />
+                  </svg>
+                </div>
+
+                {/* MongoDB Icon */}
+                <div
+                  className="absolute bottom-4 left-1/3 w-12 h-12 backdrop-blur-md bg-green-600/20 border border-green-500/30 rounded-2xl flex items-center justify-center animate-pulse shadow-lg shadow-green-600/20 parallax-reverse"
+                  style={{ animationDelay: "3.5s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.2,
+                      rotation: 12,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-6 h-6 text-green-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218z" />
+                  </svg>
+                </div>
+
+                {/* Git Icon */}
+                <div
+                  className="absolute top-2 left-1/4 w-11 h-11 backdrop-blur-md bg-red-500/20 border border-red-400/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-red-500/20 parallax-element"
+                  style={{ animationDelay: "4s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.15,
+                      rotation: -12,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-5 h-5 text-red-400"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187" />
+                  </svg>
+                </div>
+
+                {/* Tailwind CSS Icon */}
+                <div
+                  className="absolute bottom-12 right-1/4 w-13 h-13 backdrop-blur-md bg-teal-500/20 border border-teal-400/30 rounded-2xl flex items-center justify-center animate-pulse shadow-lg shadow-teal-500/20 parallax-reverse"
+                  style={{ animationDelay: "4.5s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      rotation: 6,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-7 h-7 text-teal-400"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C7.666,17.818,9.027,19.2,12.001,19.2c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+                  </svg>
+                </div>
+
+                {/* Firebase Icon */}
+                <div
+                  className="absolute top-36 left-4 w-12 h-12 backdrop-blur-md bg-yellow-600/20 border border-yellow-500/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-yellow-600/20 parallax-element"
+                  style={{ animationDelay: "5s" }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.15,
+                      rotation: -15,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      rotation: 0,
+                      duration: 0.3,
+                      ease: "back.out(1.7)",
+                    });
+                  }}
+                >
+                  <svg
+                    className="w-6 h-6 text-yellow-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5.803 21.066l2.756-4.756L12.618 4.49a.371.371 0 01.664 0L18.197 16.31l2.756 4.756a.743.743 0 01-.332 1.1L12 24.165l-8.621-1.999a.743.743 0 01-.332-1.1L5.803 21.066z" />
+                  </svg>
+                </div>
+
+                {/* Enhanced Connecting Lines Network */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none">
                   <defs>
                     <linearGradient
@@ -438,28 +722,232 @@ const Hero = () => {
                       x2="100%"
                       y2="100%"
                     >
-                      <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
+                      <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.4" />
+                      <stop
+                        offset="50%"
+                        stopColor="#a855f7"
+                        stopOpacity="0.2"
+                      />
                       <stop
                         offset="100%"
-                        stopColor="#a855f7"
+                        stopColor="#ec4899"
+                        stopOpacity="0.1"
+                      />
+                    </linearGradient>
+                    <linearGradient
+                      id="lineGradient2"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
+                      <stop
+                        offset="100%"
+                        stopColor="#3b82f6"
+                        stopOpacity="0.1"
+                      />
+                    </linearGradient>
+                    <linearGradient
+                      id="lineGradient3"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                      <stop
+                        offset="100%"
+                        stopColor="#f59e0b"
                         stopOpacity="0.1"
                       />
                     </linearGradient>
                   </defs>
+
+                  {/* Main hub connections radiating from center */}
                   <path
-                    d="M 100 80 Q 200 120 300 100 T 500 120"
+                    d="M 192 192 L 100 80"
                     stroke="url(#lineGradient)"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
                     fill="none"
                     className="animate-pulse"
+                    opacity="0.6"
                   />
                   <path
-                    d="M 150 300 Q 250 250 350 280 T 450 260"
+                    d="M 192 192 L 320 60"
                     stroke="url(#lineGradient)"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "0.5s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 350 160"
+                    stroke="url(#lineGradient2)"
+                    strokeWidth="1.5"
                     fill="none"
                     className="animate-pulse"
                     style={{ animationDelay: "1s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 320 320"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "1.5s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 80 320"
+                    stroke="url(#lineGradient3)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "2s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 40 280"
+                    stroke="url(#lineGradient2)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "2.5s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 280 40"
+                    stroke="url(#lineGradient3)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "3s" }}
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M 192 192 L 350 280"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "3.5s" }}
+                    opacity="0.6"
+                  />
+
+                  {/* Curved connecting paths between technologies */}
+                  <path
+                    d="M 100 80 Q 200 120 320 60"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "4s" }}
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M 320 60 Q 350 120 350 160"
+                    stroke="url(#lineGradient2)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "4.5s" }}
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M 350 160 Q 320 240 320 320"
+                    stroke="url(#lineGradient3)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "5s" }}
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M 320 320 Q 200 340 80 320"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "5.5s" }}
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M 80 320 Q 60 300 40 280"
+                    stroke="url(#lineGradient2)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "6s" }}
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M 40 280 Q 120 200 100 80"
+                    stroke="url(#lineGradient3)"
+                    strokeWidth="1"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "6.5s" }}
+                    opacity="0.4"
+                  />
+
+                  {/* Additional network connections */}
+                  <path
+                    d="M 280 40 Q 300 80 350 160"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="0.8"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "7s" }}
+                    opacity="0.3"
+                  />
+                  <path
+                    d="M 350 280 Q 280 300 320 320"
+                    stroke="url(#lineGradient2)"
+                    strokeWidth="0.8"
+                    fill="none"
+                    className="animate-pulse"
+                    style={{ animationDelay: "7.5s" }}
+                    opacity="0.3"
+                  />
+
+                  {/* Pulsing data flow indicators */}
+                  <circle
+                    cx="192"
+                    cy="192"
+                    r="3"
+                    fill="#8b5cf6"
+                    opacity="0.8"
+                    className="animate-ping"
+                  />
+                  <circle
+                    cx="100"
+                    cy="80"
+                    r="2"
+                    fill="#06b6d4"
+                    opacity="0.6"
+                    className="animate-ping"
+                    style={{ animationDelay: "1s" }}
+                  />
+                  <circle
+                    cx="350"
+                    cy="160"
+                    r="2"
+                    fill="#10b981"
+                    opacity="0.6"
+                    className="animate-ping"
+                    style={{ animationDelay: "2s" }}
+                  />
+                  <circle
+                    cx="320"
+                    cy="320"
+                    r="2"
+                    fill="#f59e0b"
+                    opacity="0.6"
+                    className="animate-ping"
+                    style={{ animationDelay: "3s" }}
                   />
                 </svg>
 
