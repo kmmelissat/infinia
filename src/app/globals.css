@@ -1,26 +1,75 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Infinia Brand Colors */
+  --background-main: #0a0a0a;
+  --foreground-text: #ffffff;
+  --purple-primary: #8b5cf6;
+  --purple-secondary: #a855f7;
+  --purple-dark: #6d28d9;
+  --purple-light: #c4b5fd;
+  
+  /* Gradient Colors */
+  --gradient-dark-indigo: #1a0b2e;
+  --gradient-dark-violet: #2d1b69;
+  --gradient-light-purple: #c084fc;
+  --gradient-magenta: #e879f9;
+  --gradient-soft-pink: #f0abfc;
+  --gradient-purple-indigo: #7c3aed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background-main);
+  color: var(--foreground-text);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom gradient backgrounds */
+.gradient-bg-main {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-dark-indigo) 0%,
+    var(--gradient-dark-violet) 100%
+  );
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-light-purple) 0%,
+    var(--gradient-magenta) 50%,
+    var(--gradient-soft-pink) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect utilities */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-effect-light {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
