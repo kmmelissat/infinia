@@ -233,26 +233,6 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
           {/* Left Side - Text Content */}
           <div className="text-left">
-            {/* Enhanced Badge */}
-            <div
-              ref={badgeRef}
-              className="inline-flex items-center space-x-3 backdrop-blur-xl bg-gradient-to-r from-white/10 to-purple-primary/10 border border-purple-primary/30 rounded-full px-8 py-4 mb-8 shadow-xl shadow-purple-primary/30 hover:shadow-purple-primary/50 group cursor-pointer"
-              onMouseEnter={() =>
-                gsap.to(badgeRef.current, { scale: 1.1, duration: 0.3 })
-              }
-              onMouseLeave={() =>
-                gsap.to(badgeRef.current, { scale: 1, duration: 0.3 })
-              }
-            >
-              <div className="relative">
-                <div className="w-3 h-3 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-ping opacity-75"></div>
-              </div>
-              <span className="text-sm font-semibold text-purple-light group-hover:text-white transition-colors duration-300">
-                🇸🇻 Empresa Salvadoreña de Tecnología 🚀
-              </span>
-            </div>
-
             {/* Enhanced Main Heading */}
             <h1
               ref={titleRef}
