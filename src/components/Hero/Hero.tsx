@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
-import TechHub from "./Hero/components/TechHub";
+import TechHub from "./components/TechHub";
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
@@ -22,9 +22,7 @@ const Hero = () => {
 
   const taglines = [
     "Visión infinita, innovación sin fronteras.",
-    "Transformando El Salvador digitalmente.",
     "Conectando ideas con soluciones globales.",
-    "Tecnología salvadoreña para el mundo.",
   ];
 
   // GSAP Animations
@@ -254,10 +252,10 @@ const Hero = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
             >
               <span className="block text-white mb-2 drop-shadow-2xl">
-                Transformamos Ideas en
+                Transformamos tu visión en
               </span>
               <span className="block gradient-text drop-shadow-lg relative">
-                Soluciones Innovadoras
+                soluciones tecnológicas sin límites
                 <div className="absolute inset-0 gradient-text blur-sm opacity-50 -z-10"></div>
               </span>
             </h1>
@@ -280,43 +278,9 @@ const Hero = () => {
               ref={ctaRef}
               className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6"
             >
+              {/* Button */}
               <button
-                className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-12 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 flex items-center space-x-3 border border-purple-primary/30 overflow-hidden"
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: "back.out(1.7)",
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: "back.out(1.7)",
-                  });
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Comienza Tu Proyecto</span>
-                <svg
-                  className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 relative z-10"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </button>
-
-              {/* Secondary CTA */}
-              <button
-                className="group relative backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-5 rounded-2xl font-medium hover:bg-white/10 hover:border-white/30 flex items-center space-x-3"
+                className="rounded-full group relative backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-5 font-medium hover:bg-white/10 hover:border-white/30 flex items-center space-x-3"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
                 }}
@@ -324,7 +288,7 @@ const Hero = () => {
                   gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
                 }}
               >
-                <span>Ver Portafolio</span>
+                <span>Comienza tu proyecto</span>
                 <svg
                   className="w-4 h-4"
                   fill="none"
