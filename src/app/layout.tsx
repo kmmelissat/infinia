@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Infinia - Design To Code Copilot | AI-Powered Frontend Development",
+  title: "Infinia - Software Development Solutions | Custom Web & Mobile Apps",
   description:
-    "Transform your Figma designs and screenshots into production-ready frontend pages in minutes with Infinia's AI-powered development platform.",
+    "Professional software development services. We build custom web applications, mobile apps, and enterprise solutions with modern technologies and best practices.",
 };
 
 export default function RootLayout({

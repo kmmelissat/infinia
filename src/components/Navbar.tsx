@@ -70,7 +70,7 @@ const Navbar = () => {
                 Contact
               </button>
               <button className="bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-primary/30 hover:shadow-purple-primary/50 border border-purple-primary/20">
-                Get Started
+                Start Project
               </button>
             </div>
 
@@ -124,7 +124,7 @@ const Navbar = () => {
                   Contact
                 </button>
                 <button className="w-full bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white py-3 rounded-full font-medium transition-all duration-300 shadow-lg shadow-purple-primary/30 border border-purple-primary/20">
-                  Get Started
+                  Start Project
                 </button>
               </div>
             </div>
