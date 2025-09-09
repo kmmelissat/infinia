@@ -38,9 +38,9 @@ const Features = () => {
           />
         </svg>
       ),
-      title: "Lightning Fast Development",
+      title: "Desarrollo Ágil y Eficiente",
       description:
-        "Accelerate your project timeline with our agile development process and cutting-edge tools.",
+        "Metodologías ágiles y herramientas de vanguardia para acelerar el desarrollo de tu proyecto sin comprometer la calidad.",
       color: "from-yellow-400 to-orange-500",
     },
     {
@@ -55,13 +55,13 @@ const Features = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"
           />
         </svg>
       ),
-      title: "Quality Assurance",
+      title: "Competitividad Global",
       description:
-        "Rigorous testing and code review processes ensure your application is bug-free and performant.",
+        "Soluciones tecnológicas que posicionan a tu empresa salvadoreña para competir exitosamente en mercados internacionales.",
       color: "from-green-400 to-emerald-500",
     },
     {
@@ -80,9 +80,9 @@ const Features = () => {
           />
         </svg>
       ),
-      title: "User-Centric Design",
+      title: "Experiencias Centradas en el Usuario",
       description:
-        "Beautiful, intuitive interfaces that your users will love and find easy to navigate.",
+        "Diseño UX/UI excepcional que conecta emocionalmente con tus usuarios y maximiza la conversión de tu negocio.",
       color: "from-pink-400 to-rose-500",
     },
     {
@@ -97,13 +97,13 @@ const Features = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
           />
         </svg>
       ),
-      title: "Cloud-Ready Solutions",
+      title: "Innovación Constante",
       description:
-        "Scalable applications built for the cloud with modern deployment and infrastructure practices.",
+        "Investigación y desarrollo continuo con tecnologías emergentes como IA, blockchain e IoT para mantener tu ventaja competitiva.",
       color: "from-blue-400 to-cyan-500",
     },
     {
@@ -122,9 +122,9 @@ const Features = () => {
           />
         </svg>
       ),
-      title: "Enterprise Security",
+      title: "Seguridad Empresarial",
       description:
-        "Bank-level security measures to protect your data and ensure compliance with industry standards.",
+        "Protocolos de seguridad de nivel bancario y cumplimiento de estándares internacionales para proteger los datos de tu empresa.",
       color: "from-purple-400 to-indigo-500",
     },
     {
@@ -143,9 +143,9 @@ const Features = () => {
           />
         </svg>
       ),
-      title: "24/7 Support",
+      title: "Soporte Integral 24/7",
       description:
-        "Round-the-clock technical support and maintenance to keep your applications running smoothly.",
+        "Acompañamiento técnico continuo y mantenimiento proactivo para garantizar el funcionamiento óptimo de tus soluciones.",
       color: "from-teal-400 to-green-500",
     },
   ];
@@ -176,7 +176,7 @@ const Features = () => {
           >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-purple-light">
-              Why Choose Infinia
+              ¿Por Qué Elegir Infinia?
             </span>
           </div>
 
@@ -187,8 +187,8 @@ const Features = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Powerful Features for
-            <span className="block gradient-text">Modern Development</span>
+            Características que nos
+            <span className="block gradient-text">Distinguen</span>
           </h2>
 
           <p
@@ -198,8 +198,8 @@ const Features = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Everything you need to build, deploy, and scale your applications
-            with confidence and speed.
+            Todo lo que necesitas para construir, implementar y escalar
+            soluciones tecnológicas que impulsen el crecimiento de tu empresa.
           </p>
         </div>
 

@@ -72,7 +72,7 @@ const Hero = () => {
                 <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-ping opacity-75"></div>
               </div>
               <span className="text-sm font-semibold text-purple-light group-hover:text-white transition-colors duration-300">
-                ✨ Software Development Solutions 🚀
+                🇸🇻 Empresa Salvadoreña de Tecnología 🚀
               </span>
             </div>
 
@@ -85,10 +85,10 @@ const Hero = () => {
               }`}
             >
               <span className="block text-white mb-2 drop-shadow-2xl">
-                Build Software Solutions
+                Transformamos Ideas en
               </span>
               <span className="block gradient-text drop-shadow-lg relative">
-                Faster And Better
+                Soluciones Innovadoras
                 <div className="absolute inset-0 gradient-text blur-sm opacity-50 -z-10"></div>
               </span>
             </h1>
@@ -101,10 +101,11 @@ const Hero = () => {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Custom web applications, mobile apps, and enterprise solutions
+              Tecnología y consultoría digital para empresas que buscan competir
+              a nivel global
               <br />
               <span className="gradient-text font-semibold">
-                built with modern technologies and best practices.
+                Visión infinita, innovación sin fronteras.
               </span>
             </p>
 
@@ -118,7 +119,7 @@ const Hero = () => {
             >
               <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 flex items-center space-x-3 border border-purple-primary/30 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                <span className="relative z-10">Start Your Project</span>
+                <span className="relative z-10">Comienza Tu Proyecto</span>
                 <svg
                   className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 relative z-10"
                   fill="none"

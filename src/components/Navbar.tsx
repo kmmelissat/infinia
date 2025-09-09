@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,11 +17,10 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Features", href: "#features" },
-    { name: "Services", href: "#services" },
-    { name: "Tech Stack", href: "#tech-stack" },
-    { name: "Reviews", href: "#reviews" },
-    { name: "Contact", href: "#contact" },
+    { name: "Características", href: "#features" },
+    { name: "Servicios", href: "#services" },
+    { name: "Tecnologías", href: "#tech-stack" },
+    { name: "Testimonios", href: "#reviews" },
   ];
 
   return (
@@ -35,20 +35,7 @@ const Navbar = () => {
         <div className="px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-purple-primary to-purple-secondary flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <span className="text-xl lg:text-2xl font-bold gradient-text">
-                Infinia
-              </span>
-            </div>
+            <Logo size="md" showText={true} />
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-10">
@@ -67,10 +54,10 @@ const Navbar = () => {
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center space-x-6">
               <button className="text-gray-300 hover:text-white transition-all duration-300 px-5 py-2.5 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20">
-                Contact
+                Contacto
               </button>
               <button className="bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-primary/30 hover:shadow-purple-primary/50 border border-purple-primary/20">
-                Start Project
+                Comenzar Proyecto
               </button>
             </div>
 
@@ -121,10 +108,10 @@ const Navbar = () => {
               ))}
               <div className="pt-4 border-t border-white/20 space-y-3">
                 <button className="w-full text-gray-300 hover:text-white transition-all duration-300 py-3 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10">
-                  Contact
+                  Contacto
                 </button>
                 <button className="w-full bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white py-3 rounded-full font-medium transition-all duration-300 shadow-lg shadow-purple-primary/30 border border-purple-primary/20">
-                  Start Project
+                  Comenzar Proyecto
                 </button>
               </div>
             </div>

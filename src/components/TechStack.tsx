@@ -125,7 +125,7 @@ const TechStack = () => {
           >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-purple-light">
-              Technology Stack
+              Stack Tecnológico
             </span>
           </div>
 
@@ -136,8 +136,8 @@ const TechStack = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Cutting-Edge
-            <span className="block gradient-text">Technologies We Use</span>
+            Tecnologías de
+            <span className="block gradient-text">Vanguardia</span>
           </h2>
 
           <p
@@ -147,8 +147,8 @@ const TechStack = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            We leverage the latest and most reliable technologies to build
-            robust, scalable, and future-proof applications.
+            Utilizamos las tecnologías más avanzadas y confiables para construir
+            aplicaciones robustas, escalables y preparadas para el futuro.
           </p>
         </div>
 
@@ -213,10 +213,10 @@ const TechStack = () => {
           }`}
         >
           {[
-            { number: "50+", label: "Technologies Mastered" },
-            { number: "100+", label: "Projects Delivered" },
-            { number: "99.9%", label: "Uptime Guaranteed" },
-            { number: "24/7", label: "Support Available" },
+            { number: "50+", label: "Tecnologías Dominadas" },
+            { number: "100+", label: "Proyectos Entregados" },
+            { number: "99.9%", label: "Tiempo de Actividad" },
+            { number: "24/7", label: "Soporte Disponible" },
           ].map((stat, index) => (
             <div key={index} className="text-center group">
               <div className="text-3xl md:text-4xl font-black gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">

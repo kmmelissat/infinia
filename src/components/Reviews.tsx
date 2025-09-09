@@ -23,63 +23,63 @@ const Reviews = () => {
 
   const reviews = [
     {
-      name: "Sarah Chen",
-      role: "CTO at TechFlow",
-      company: "TechFlow Solutions",
-      avatar: "👩‍💻",
-      rating: 5,
-      review:
-        "Infinia transformed our outdated system into a modern, scalable platform. Their expertise in React and cloud architecture exceeded our expectations. The team delivered on time and within budget.",
-      gradient: "from-pink-500 to-rose-500",
-    },
-    {
-      name: "Marcus Rodriguez",
-      role: "Founder & CEO",
-      company: "StartupLab",
+      name: "Carlos Mendoza",
+      role: "CEO",
+      company: "Grupo Empresarial Centroamérica",
       avatar: "👨‍💼",
       rating: 5,
       review:
-        "Working with Infinia was a game-changer for our startup. They built our MVP in record time and helped us scale to 10,000+ users. Their technical guidance was invaluable.",
+        "Infinia transformó completamente nuestros procesos empresariales. Su consultoría en transformación digital nos permitió expandirnos exitosamente a mercados internacionales. Excelente trabajo del equipo salvadoreño.",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
-      name: "Emily Watson",
-      role: "Product Manager",
-      company: "FinanceCore",
-      avatar: "👩‍🔬",
-      rating: 5,
-      review:
-        "The mobile app Infinia developed for us has a 4.8-star rating on app stores. Their attention to detail and user experience design is exceptional. Highly recommended!",
-      gradient: "from-green-500 to-emerald-500",
-    },
-    {
-      name: "David Kim",
-      role: "VP of Engineering",
-      company: "DataStream Inc",
-      avatar: "👨‍🔬",
-      rating: 5,
-      review:
-        "Infinia's DevOps expertise helped us achieve 99.9% uptime and reduce deployment time by 80%. Their cloud architecture is robust and cost-effective.",
-      gradient: "from-purple-500 to-indigo-500",
-    },
-    {
-      name: "Lisa Thompson",
-      role: "Digital Director",
-      company: "RetailMax",
+      name: "María Elena Rodríguez",
+      role: "Directora de Marketing",
+      company: "Innovación Retail SV",
       avatar: "👩‍💼",
       rating: 5,
       review:
-        "Our e-commerce platform built by Infinia handles Black Friday traffic seamlessly. The performance optimizations they implemented were crucial for our success.",
+        "Las estrategias de marketing digital de Infinia aumentaron nuestras ventas online en un 300%. Su enfoque en SEO/SEM y automatización fue clave para nuestro crecimiento en El Salvador y Guatemala.",
+      gradient: "from-pink-500 to-rose-500",
+    },
+    {
+      name: "Roberto Silva",
+      role: "CTO",
+      company: "FinTech Centroamericana",
+      avatar: "👨‍💻",
+      rating: 5,
+      review:
+        "El desarrollo de nuestra plataforma fintech fue excepcional. Infinia Labs implementó blockchain y IA que nos posicionó como líderes en innovación financiera en la región.",
+      gradient: "from-green-500 to-emerald-500",
+    },
+    {
+      name: "Ana Sofía Martínez",
+      role: "Founder",
+      company: "EcoTech Solutions",
+      avatar: "👩‍🔬",
+      rating: 5,
+      review:
+        "La aplicación móvil que desarrollaron tiene más de 50,000 descargas. Su diseño UX/UI centrado en el usuario latinoamericano fue fundamental para nuestro éxito en el mercado regional.",
+      gradient: "from-purple-500 to-indigo-500",
+    },
+    {
+      name: "Diego Hernández",
+      role: "Director de Operaciones",
+      company: "LogiSmart CA",
+      avatar: "👨‍🔧",
+      rating: 5,
+      review:
+        "La implementación de IoT y automatización RPA redujo nuestros costos operativos en 40%. Infinia demostró que la innovación tecnológica puede nacer desde El Salvador para el mundo.",
       gradient: "from-orange-500 to-red-500",
     },
     {
-      name: "Alex Johnson",
-      role: "Head of Technology",
-      company: "HealthTech Pro",
-      avatar: "👨‍⚕️",
+      name: "Gabriela Vásquez",
+      role: "VP de Tecnología",
+      company: "HealthCare Innovación",
+      avatar: "👩‍⚕️",
       rating: 5,
       review:
-        "Security and compliance were critical for our healthcare app. Infinia delivered a HIPAA-compliant solution that our users trust. Outstanding work!",
+        "Su experiencia en seguridad y cumplimiento internacional fue crucial para nuestro sistema de salud. Logramos certificaciones internacionales que nos abrieron mercados en toda Latinoamérica.",
       gradient: "from-teal-500 to-cyan-500",
     },
   ];
@@ -131,7 +131,7 @@ const Reviews = () => {
           >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-purple-light">
-              Client Reviews
+              Testimonios de Clientes
             </span>
           </div>
 
@@ -142,8 +142,8 @@ const Reviews = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            What Our Clients
-            <span className="block gradient-text">Say About Us</span>
+            Lo que Dicen Nuestros
+            <span className="block gradient-text">Clientes</span>
           </h2>
 
           <p
@@ -153,8 +153,9 @@ const Reviews = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Don't just take our word for it. Here's what industry leaders say
-            about working with Infinia.
+            No solo confíes en nuestra palabra. Descubre lo que líderes
+            empresariales de Centroamérica y el mundo dicen sobre trabajar con
+            Infinia.
           </p>
         </div>
 
@@ -218,10 +219,10 @@ const Reviews = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             {[
-              { metric: "4.9/5", label: "Average Rating" },
-              { metric: "98%", label: "Client Satisfaction" },
-              { metric: "50+", label: "Happy Clients" },
-              { metric: "100%", label: "Project Success Rate" },
+              { metric: "4.9/5", label: "Calificación Promedio" },
+              { metric: "98%", label: "Satisfacción del Cliente" },
+              { metric: "50+", label: "Clientes Satisfechos" },
+              { metric: "100%", label: "Tasa de Éxito en Proyectos" },
             ].map((stat, index) => (
               <div key={index} className="group">
                 <div className="text-3xl font-black gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
@@ -235,11 +236,11 @@ const Reviews = () => {
           </div>
 
           <p className="text-gray-300 mb-6">
-            Ready to join our satisfied clients?
+            ¿Listo para unirte a nuestros clientes satisfechos?
           </p>
           <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <span className="relative z-10">Start Your Project</span>
+            <span className="relative z-10">Inicia Tu Proyecto</span>
           </button>
         </div>
       </div>

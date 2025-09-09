@@ -23,56 +23,69 @@ const Services = () => {
 
   const services = [
     {
-      title: "Web Development",
+      title: "Desarrollo de Software a la Medida",
       description:
-        "Custom web applications built with modern frameworks like React, Next.js, and Vue.js for optimal performance and user experience.",
+        "Web apps, mobile apps y sistemas empresariales construidos con tecnologías modernas para maximizar el rendimiento y la experiencia del usuario.",
       features: [
-        "Responsive Design",
-        "SEO Optimization",
-        "Performance Tuning",
-        "Progressive Web Apps",
+        "APIs y Microservicios",
+        "Sistemas Empresariales",
+        "Aplicaciones Web",
+        "Aplicaciones Móviles",
       ],
-      icon: "🌐",
+      icon: "💻",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
-      title: "Mobile Development",
+      title: "Diseño UX/UI + Branding Digital",
       description:
-        "Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and Swift/Kotlin.",
+        "Interfaces centradas en el usuario con prototipado y testing de experiencias digitales que conectan con tu audiencia.",
       features: [
-        "Cross-Platform",
-        "Native Performance",
-        "App Store Optimization",
-        "Push Notifications",
+        "Diseño UX/UI",
+        "Prototipado Interactivo",
+        "Testing de Usabilidad",
+        "Branding Digital",
       ],
-      icon: "📱",
+      icon: "🎨",
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      title: "Backend Development",
+      title: "Consultoría en Transformación Digital",
       description:
-        "Scalable server-side solutions with Node.js, Python, and cloud services to power your applications reliably.",
+        "Diagnóstico y reingeniería de procesos con implementación de ERP, CRM y soluciones cloud para modernizar tu empresa.",
       features: [
-        "RESTful APIs",
-        "Database Design",
-        "Cloud Integration",
-        "Microservices",
+        "Diagnóstico Digital",
+        "Reingeniería de Procesos",
+        "Implementación ERP/CRM",
+        "Soluciones Cloud",
       ],
-      icon: "⚙️",
+      icon: "🔄",
       gradient: "from-green-500 to-emerald-500",
     },
     {
-      title: "DevOps & Cloud",
+      title: "Marketing Digital & Growth",
       description:
-        "Complete deployment and infrastructure management with AWS, Docker, and CI/CD pipelines for seamless operations.",
+        "Estrategias de posicionamiento digital con SEO/SEM y automatización de campañas para acelerar el crecimiento de tu negocio.",
       features: [
-        "CI/CD Pipelines",
-        "Cloud Architecture",
-        "Monitoring",
-        "Auto Scaling",
+        "Posicionamiento Digital",
+        "SEO/SEM Avanzado",
+        "Automatización",
+        "Growth Hacking",
       ],
-      icon: "☁️",
+      icon: "📈",
       gradient: "from-orange-500 to-red-500",
+    },
+    {
+      title: "Infinia Labs (I+D)",
+      description:
+        "Innovación con IA, blockchain, IoT, RPA y AR/VR. Soluciones futuras aplicadas a negocios actuales para mantener tu ventaja competitiva.",
+      features: [
+        "Inteligencia Artificial",
+        "Blockchain & Web3",
+        "IoT y Automatización",
+        "AR/VR Empresarial",
+      ],
+      icon: "🚀",
+      gradient: "from-indigo-500 to-purple-500",
     },
   ];
 
@@ -100,7 +113,7 @@ const Services = () => {
           >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-purple-light">
-              Our Services
+              Nuestros Servicios
             </span>
           </div>
 
@@ -111,8 +124,8 @@ const Services = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            Complete Software
-            <span className="block gradient-text">Development Solutions</span>
+            Soluciones Tecnológicas
+            <span className="block gradient-text">Integrales</span>
           </h2>
 
           <p
@@ -122,13 +135,14 @@ const Services = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            From concept to deployment, we provide end-to-end development
-            services tailored to your business needs.
+            Desde la conceptualización hasta la implementación, ofrecemos
+            servicios completos de tecnología y consultoría digital adaptados a
+            las necesidades de tu empresa.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
@@ -181,10 +195,12 @@ const Services = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-gray-300 mb-6">Ready to start your project?</p>
+          <p className="text-gray-300 mb-6">
+            ¿Listo para transformar tu empresa?
+          </p>
           <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <span className="relative z-10">Get Started Today</span>
+            <span className="relative z-10">Comencemos Hoy</span>
           </button>
         </div>
       </div>
