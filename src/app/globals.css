@@ -33,7 +33,7 @@ html {
 body {
   background: var(--background-main);
   color: var(--foreground-text);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-lexend-deca), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }

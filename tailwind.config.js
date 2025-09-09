@@ -20,8 +20,8 @@ module.exports = {
         "gradient-purple-indigo": "#7c3aed",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-lexend-deca)", "system-ui", "sans-serif"],
+        lexend: ["var(--font-lexend-deca)", "system-ui", "sans-serif"],
       },
       animation: {
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
