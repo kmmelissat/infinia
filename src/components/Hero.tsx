@@ -10,7 +10,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg-main">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg-main pt-24 lg:pt-32">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating orbs */}
@@ -24,10 +24,10 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
         {/* Badge */}
         <div
-          className={`inline-flex items-center space-x-2 glass-effect-light rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+          className={`inline-flex items-center space-x-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-6 py-3 mb-8 transition-all duration-1000 shadow-lg shadow-purple-primary/20 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -68,7 +68,7 @@ const Hero = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <button className="group bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-purple-primary/30 hover:shadow-purple-primary/50 flex items-center space-x-2">
+          <button className="group bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-purple-primary/30 hover:shadow-purple-primary/50 flex items-center space-x-3 border border-purple-primary/20">
             <span>Get Started</span>
             <svg
               className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -85,7 +85,7 @@ const Hero = () => {
             </svg>
           </button>
 
-          <button className="glass-effect-light text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10 flex items-center space-x-2">
+          <button className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-white/20 hover:border-white/30 flex items-center space-x-3 shadow-lg shadow-black/20">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
@@ -100,7 +100,7 @@ const Hero = () => {
           }`}
         >
           {/* Mock Interface Preview */}
-          <div className="glass-effect rounded-2xl p-8 shadow-2xl shadow-purple-500/20">
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl shadow-purple-primary/20">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -111,11 +111,11 @@ const Hero = () => {
             </div>
 
             {/* Code Preview */}
-            <div className="bg-black/30 rounded-lg p-6 text-left">
+            <div className="bg-black/40 backdrop-blur-sm border border-white/5 rounded-2xl p-6 text-left">
               <div className="flex items-center space-x-4 mb-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-purple-primary rounded"></div>
-                    <span className="text-sm text-purple-light">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-purple-primary rounded"></div>
+                  <span className="text-sm text-purple-light">
                     Generate your design to code ...
                   </span>
                 </div>
@@ -140,7 +140,7 @@ const Hero = () => {
                 </div>
               </div>
 
-                <div className="mt-4 p-3 bg-purple-primary/10 rounded border border-purple-primary/20">
+              <div className="mt-4 p-4 bg-purple-primary/10 backdrop-blur-sm rounded-xl border border-purple-primary/20">
                 <div className="flex items-center justify-between">
                   <span className="text-purple-light font-medium">
                     Your site is now live! 🚀
