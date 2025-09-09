@@ -11,16 +11,47 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg-main pt-24 lg:pt-32">
-      {/* Animated Background Elements */}
+      {/* Enhanced Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Floating orbs */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-purple-primary/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-secondary/30 rounded-full blur-lg animate-bounce"></div>
-        <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-purple-light/10 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-dark/25 rounded-full blur-xl animate-bounce"></div>
+        {/* Floating orbs with improved animations */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-purple-primary/20 rounded-full blur-xl animate-pulse shadow-2xl shadow-purple-primary/30"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-secondary/30 rounded-full blur-lg animate-bounce shadow-xl shadow-purple-secondary/25"></div>
+        <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-purple-light/10 rounded-full blur-2xl animate-pulse shadow-2xl shadow-purple-light/20"></div>
+        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-dark/25 rounded-full blur-xl animate-bounce shadow-xl shadow-purple-dark/30"></div>
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        {/* Additional floating elements */}
+        <div
+          className="absolute top-1/3 left-1/3 w-16 h-16 bg-gradient-magenta/15 rounded-full blur-lg animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/3 right-1/4 w-20 h-20 bg-gradient-soft-pink/20 rounded-full blur-xl animate-bounce"
+          style={{ animationDelay: "3s" }}
+        ></div>
+
+        {/* Enhanced grid pattern with animation */}
+        <div
+          className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"
+          style={{ animationDuration: "4s" }}
+        ></div>
+
+        {/* Radial gradient overlays */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-purple-primary/10 via-transparent to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-purple-secondary/10 via-transparent to-transparent rounded-full blur-3xl"></div>
+
+        {/* Animated particles */}
+        <div
+          className="absolute top-1/4 left-1/2 w-1 h-1 bg-purple-400 rounded-full animate-ping"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-3/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-ping"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 right-1/3 w-1 h-1 bg-pink-400 rounded-full animate-ping"
+          style={{ animationDelay: "3s" }}
+        ></div>
       </div>
 
       {/* Main Content */}
@@ -28,32 +59,38 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
           {/* Left Side - Text Content */}
           <div className="text-left">
-            {/* Badge */}
+            {/* Enhanced Badge */}
             <div
-              className={`inline-flex items-center space-x-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-6 py-3 mb-8 transition-all duration-1000 shadow-lg shadow-purple-primary/20 ${
+              className={`inline-flex items-center space-x-3 backdrop-blur-xl bg-gradient-to-r from-white/10 to-purple-primary/10 border border-purple-primary/30 rounded-full px-8 py-4 mb-8 transition-all duration-1000 shadow-xl shadow-purple-primary/30 hover:shadow-purple-primary/50 hover:scale-105 group ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
               }`}
             >
-              <div className="w-2 h-2 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-purple-light">
-                Software Development Solutions 🚀
+              <div className="relative">
+                <div className="w-3 h-3 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full animate-ping opacity-75"></div>
+              </div>
+              <span className="text-sm font-semibold text-purple-light group-hover:text-white transition-colors duration-300">
+                ✨ Software Development Solutions 🚀
               </span>
             </div>
 
-            {/* Main Heading */}
+            {/* Enhanced Main Heading */}
             <h1
-              className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 transition-all duration-1000 delay-200 ${
+              className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 transition-all duration-1000 delay-200 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <span className="block text-white mb-2">
+              <span className="block text-white mb-2 drop-shadow-2xl">
                 Build Software Solutions
               </span>
-              <span className="block gradient-text">Faster And Better</span>
+              <span className="block gradient-text drop-shadow-lg relative">
+                Faster And Better
+                <div className="absolute inset-0 gradient-text blur-sm opacity-50 -z-10"></div>
+              </span>
             </h1>
 
             {/* Subtitle */}
@@ -79,10 +116,11 @@ const Hero = () => {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <button className="group bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-10 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-purple-primary/30 hover:shadow-purple-primary/50 flex items-center space-x-3 border border-purple-primary/20">
-                <span>Start Your Project</span>
+              <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-12 py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 flex items-center space-x-3 border border-purple-primary/30 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                <span className="relative z-10">Start Your Project</span>
                 <svg
-                  className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 relative z-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -109,10 +147,10 @@ const Hero = () => {
             <div className="relative h-96 overflow-hidden">
               {/* Floating Tech Icons */}
               <div className="absolute inset-0">
-                {/* React Icon */}
-                <div className="absolute top-16 left-16 w-16 h-16 backdrop-blur-md bg-blue-500/20 border border-blue-400/30 rounded-2xl flex items-center justify-center animate-bounce shadow-lg shadow-blue-500/20">
+                {/* Enhanced React Icon */}
+                <div className="absolute top-16 left-16 w-16 h-16 backdrop-blur-xl bg-blue-500/20 border border-blue-400/40 rounded-2xl flex items-center justify-center animate-bounce shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-110 transition-all duration-300 group cursor-pointer">
                   <svg
-                    className="w-8 h-8 text-blue-400"
+                    className="w-8 h-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
