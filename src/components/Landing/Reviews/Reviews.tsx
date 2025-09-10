@@ -182,7 +182,7 @@ const Reviews = () => {
 
               {/* Review Text */}
               <p className="text-gray-300 leading-relaxed mb-8 group-hover:text-white transition-colors duration-300">
-                "{review.review}"
+                &ldquo;{review.review}&rdquo;
               </p>
 
               {/* Reviewer Info */}

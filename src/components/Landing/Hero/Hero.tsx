@@ -10,7 +10,6 @@ import TechHub from "./components/TechHub";
 gsap.registerPlugin(TextPlugin);
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [currentTagline, setCurrentTagline] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
 
@@ -117,8 +116,6 @@ const Hero = () => {
         }
       );
     }
-
-    setIsVisible(true);
   }, []);
 
   // Tagline rotation effect
@@ -128,7 +125,7 @@ const Hero = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [taglines.length]);
 
   // Mouse move parallax effect
   useEffect(() => {

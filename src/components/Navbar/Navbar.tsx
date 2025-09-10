@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Logo from "./Logo";
+import Logo from "../Logo/Logo";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
