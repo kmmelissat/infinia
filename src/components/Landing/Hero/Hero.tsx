@@ -5,12 +5,22 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
 import TechHub from "./components/TechHub";
+import {
+  ChevronDownIcon,
+  PlayIcon,
+  SparklesIcon,
+  RocketLaunchIcon,
+  CodeBracketIcon,
+} from "@heroicons/react/24/outline";
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
 
 const Hero = () => {
   const [currentTagline, setCurrentTagline] = useState(0);
+  const [currentWord, setCurrentWord] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
 
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -18,10 +28,25 @@ const Hero = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const techStackRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
+  const typewriterRef = useRef<HTMLSpanElement>(null);
 
   const taglines = [
-    "Visión infinita, innovación sin fronteras.",
-    "Conectando ideas con soluciones globales.",
+    "Donde la innovación no tiene límites.",
+    "Construimos el futuro, una línea de código a la vez.",
+  ];
+
+  const dynamicWords = [
+    "ideas",
+    "conceptos",
+    "visiones",
+    "proyectos",
+    "sueños",
+  ];
+
+  const stats = [
+    { number: "50+", label: "Proyectos", icon: RocketLaunchIcon },
+    { number: "99%", label: "Satisfacción", icon: SparklesIcon },
+    { number: "24/7", label: "Soporte", icon: CodeBracketIcon },
   ];
 
   // GSAP Animations
@@ -118,14 +143,24 @@ const Hero = () => {
     }
   }, []);
 
-  // Tagline rotation effect
+  // Typewriter effect for dynamic words
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTagline((prev) => (prev + 1) % taglines.length);
-    }, 4000);
+      setCurrentWord((prev) => (prev + 1) % dynamicWords.length);
+    }, 2000);
 
     return () => clearInterval(interval);
-  }, [taglines.length]);
+  }, [dynamicWords.length]);
+
+  // Mouse tracking for interactive elements
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   // Mouse move parallax effect
   useEffect(() => {
@@ -158,7 +193,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg-main pt-24 lg:pt-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg-main pt-20 lg:pt-32"
     >
       {/* Enhanced Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -238,46 +273,68 @@ const Hero = () => {
         ></div>
       </div>
 
+      {/* Interactive Cursor Effect */}
+      <div
+        className="fixed w-4 h-4 bg-purple-primary/30 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-100 ease-out"
+        style={{
+          left: mousePosition.x - 8,
+          top: mousePosition.y - 8,
+          transform: `scale(${mousePosition.x > 0 ? 1 : 0})`,
+        }}
+      />
+
+      {/* Floating Action Button */}
+      <div className="fixed bottom-8 right-8 z-40">
+        <button className="group relative w-14 h-14 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full shadow-lg shadow-purple-primary/25 hover:shadow-purple-primary/40 transition-all duration-300 flex items-center justify-center">
+          <PlayIcon className="w-6 h-6 text-white ml-1 transition-transform group-hover:scale-110" />
+          <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </button>
+      </div>
+
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center min-h-[700px]">
           {/* Left Side - Text Content */}
-          <div className="text-left">
+          <div className="text-left max-w-2xl">
             {/* Enhanced Main Heading */}
             <h1
               ref={titleRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-8"
             >
-              <span className="block text-white mb-2 drop-shadow-2xl">
-                Transformamos tu visión en
+              <span className="block text-white mb-4 drop-shadow-2xl">
+                Software que transforma
               </span>
-              <span className="block gradient-text drop-shadow-lg relative">
-                soluciones tecnológicas sin límites
-                <div className="absolute inset-0 gradient-text blur-sm opacity-50 -z-10"></div>
+              <span className="block gradient-text drop-shadow-lg relative leading-[1.1]">
+                <span
+                  ref={typewriterRef}
+                  className="inline-block min-w-[200px] text-left border-r-2 border-purple-primary animate-pulse"
+                  key={currentWord}
+                >
+                  {dynamicWords[currentWord]}
+                </span>
+                <br />
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium">
+                  en realidad
+                </span>
+                <div className="absolute inset-0 gradient-text blur-sm opacity-30 -z-10"></div>
               </span>
             </h1>
 
             {/* Dynamic Subtitle */}
-            <p
-              ref={subtitleRef}
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed"
-            >
-              Tecnología y consultoría digital para empresas que buscan competir
-              a nivel global
-              <br />
-              <span className="gradient-text font-semibold">
-                {taglines[currentTagline]}
-              </span>
-            </p>
+            <div ref={subtitleRef} className="mb-10">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
+                Desarrollo web y móvil para empresas innovadoras
+              </p>
+            </div>
 
             {/* Enhanced CTA Buttons */}
             <div
               ref={ctaRef}
-              className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6"
+              className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6"
             >
-              {/* Button */}
+              {/* Primary Button */}
               <button
-                className="rounded-full group relative backdrop-blur-md bg-white/5 border border-white/20 text-white px-8 py-5 font-medium hover:bg-white/10 hover:border-white/30 flex items-center space-x-3"
+                className="group relative backdrop-blur-md bg-gradient-to-r from-purple-primary/80 to-purple-secondary/80 hover:from-purple-primary hover:to-purple-secondary border border-purple-primary/30 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center space-x-3 shadow-lg shadow-purple-primary/25 hover:shadow-purple-primary/40"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
                 }}
@@ -285,9 +342,9 @@ const Hero = () => {
                   gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
                 }}
               >
-                <span>Comienza tu proyecto</span>
+                <span>Empezar</span>
                 <svg
-                  className="w-4 h-4"
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -296,10 +353,85 @@ const Hero = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
               </button>
+
+              {/* Secondary Button */}
+              <button
+                className="group relative backdrop-blur-md bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/30 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center space-x-3"
+                onMouseEnter={(e) => {
+                  gsap.to(e.currentTarget, { scale: 1.02, duration: 0.3 });
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
+                }}
+              >
+                <span>Ver proyectos</span>
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Dynamic Stats */}
+            <div className="mt-12 grid grid-cols-3 gap-6">
+              {stats.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group relative overflow-hidden rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 p-4 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                    onMouseEnter={(e) => {
+                      gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
+                    }}
+                    onMouseLeave={(e) => {
+                      gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
+                    }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="p-2 rounded-lg bg-gradient-to-r from-purple-primary/20 to-purple-secondary/20">
+                        <IconComponent className="w-5 h-5 text-purple-primary" />
+                      </div>
+                      <div>
+                        <div className="text-xl font-bold text-white">
+                          {stat.number}
+                        </div>
+                        <div className="text-xs text-gray-400">
+                          {stat.label}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hover effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-primary/10 to-purple-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="mt-16 flex justify-center">
+              <div className="animate-bounce">
+                <ChevronDownIcon className="w-6 h-6 text-white/60" />
+              </div>
             </div>
           </div>
 
