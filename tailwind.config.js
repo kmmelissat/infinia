@@ -18,6 +18,12 @@ module.exports = {
         "gradient-magenta": "#e879f9",
         "gradient-soft-pink": "#f0abfc",
         "gradient-purple-indigo": "#7c3aed",
+        "dashboard-bg": "#f8fafc",
+        "dashboard-card": "#ffffff",
+        "dashboard-sidebar": "#1e293b",
+        "dashboard-text-primary": "#1e293b",
+        "dashboard-text-secondary": "#64748b",
+        "dashboard-border": "#e2e8f0",
       },
       fontFamily: {
         sans: ["var(--font-lexend-deca)", "system-ui", "sans-serif"],
