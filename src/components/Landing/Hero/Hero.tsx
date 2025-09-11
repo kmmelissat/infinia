@@ -5,13 +5,173 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
 import TechHub from "./components/TechHub";
-import {
-  ChevronDownIcon,
-  PlayIcon,
-  SparklesIcon,
-  RocketLaunchIcon,
-  CodeBracketIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronDownIcon, PlayIcon } from "@heroicons/react/24/outline";
+// Custom React Bits-inspired components
+const AnimatedCounter = ({
+  value,
+  duration = 2000,
+  suffix = "",
+}: {
+  value: number;
+  duration?: number;
+  suffix?: string;
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const end = value;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [value, duration]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
+const GradientText = ({
+  children,
+  colors,
+  className = "",
+}: {
+  children: React.ReactNode;
+  colors: string[];
+  className?: string;
+}) => {
+  const gradientStyle = {
+    background: `linear-gradient(45deg, ${colors.join(", ")})`,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+  };
+
+  return (
+    <span className={className} style={gradientStyle}>
+      {children}
+    </span>
+  );
+};
+
+const TypewriterText = ({
+  words,
+  speed = 100,
+  deleteSpeed = 50,
+  delayBetweenWords = 2000,
+}: {
+  words: string[];
+  speed?: number;
+  deleteSpeed?: number;
+  delayBetweenWords?: number;
+}) => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[currentWordIndex];
+
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentText.length < currentWord.length) {
+            setCurrentText(currentWord.slice(0, currentText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), delayBetweenWords);
+          }
+        } else {
+          if (currentText.length > 0) {
+            setCurrentText(currentText.slice(0, -1));
+          } else {
+            setIsDeleting(false);
+            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          }
+        }
+      },
+      isDeleting ? deleteSpeed : speed
+    );
+
+    return () => clearTimeout(timeout);
+  }, [
+    currentText,
+    isDeleting,
+    currentWordIndex,
+    words,
+    speed,
+    deleteSpeed,
+    delayBetweenWords,
+  ]);
+
+  return (
+    <span>
+      {currentText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+};
+
+const ShimmerButton = ({
+  children,
+  className = "",
+  shimmerColor = "#8b5cf6",
+  background = "",
+  onClick,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  shimmerColor?: string;
+  background?: string;
+  onClick?: () => void;
+}) => {
+  return (
+    <button
+      className={`relative overflow-hidden ${className}`}
+      style={{ background }}
+      onClick={onClick}
+    >
+      <div className="absolute inset-0 -top-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 animate-shimmer"></div>
+      {children}
+    </button>
+  );
+};
+
+const InteractiveCard = ({
+  children,
+  className = "",
+  hoverEffect = "glow",
+  glowColor = "#8b5cf6",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  hoverEffect?: string;
+  glowColor?: string;
+}) => {
+  return (
+    <div
+      className={`group relative transition-all duration-300 hover:scale-105 ${className}`}
+    >
+      {children}
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+        style={{ backgroundColor: glowColor + "20" }}
+      ></div>
+    </div>
+  );
+};
 
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
@@ -41,12 +201,6 @@ const Hero = () => {
     "visiones",
     "proyectos",
     "sueños",
-  ];
-
-  const stats = [
-    { number: "50+", label: "Proyectos", icon: RocketLaunchIcon },
-    { number: "99%", label: "Satisfacción", icon: SparklesIcon },
-    { number: "24/7", label: "Soporte", icon: CodeBracketIcon },
   ];
 
   // GSAP Animations
@@ -304,28 +458,28 @@ const Hero = () => {
               <span className="block text-white mb-4 drop-shadow-2xl">
                 Software que transforma
               </span>
-              <span className="block gradient-text drop-shadow-lg relative leading-[1.1]">
-                <span
-                  ref={typewriterRef}
-                  className="inline-block min-w-[200px] text-left border-r-2 border-purple-primary animate-pulse"
-                  key={currentWord}
+              <span className="block drop-shadow-lg relative leading-[1.1]">
+                <GradientText
+                  colors={["#8b5cf6", "#e879f9", "#c084fc"]}
+                  className="inline-block min-w-[200px] text-left"
                 >
-                  {dynamicWords[currentWord]}
-                </span>
+                  <TypewriterText
+                    words={dynamicWords}
+                    speed={50}
+                    deleteSpeed={30}
+                    delayBetweenWords={800}
+                  />
+                </GradientText>
                 <br />
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium">
+                <GradientText
+                  colors={["#8b5cf6", "#e879f9"]}
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium"
+                >
                   en realidad
-                </span>
+                </GradientText>
                 <div className="absolute inset-0 gradient-text blur-sm opacity-30 -z-10"></div>
               </span>
             </h1>
-
-            {/* Dynamic Subtitle */}
-            <div ref={subtitleRef} className="mb-10">
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
-                Desarrollo web y móvil para empresas innovadoras
-              </p>
-            </div>
 
             {/* Enhanced CTA Buttons */}
             <div
@@ -333,30 +487,29 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6"
             >
               {/* Primary Button */}
-              <button
-                className="group relative backdrop-blur-md bg-gradient-to-r from-purple-primary/80 to-purple-secondary/80 hover:from-purple-primary hover:to-purple-secondary border border-purple-primary/30 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center space-x-3 shadow-lg shadow-purple-primary/25 hover:shadow-purple-primary/40"
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
-                }}
+              <ShimmerButton
+                className="px-8 py-4 rounded-full font-medium text-white"
+                shimmerColor="#8b5cf6"
+                background="linear-gradient(45deg, #8b5cf6, #e879f9)"
+                onClick={() => console.log("Empezar clicked")}
               >
-                <span>Empezar</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </button>
+                <span className="flex items-center space-x-3">
+                  <span>Empezar</span>
+                  <svg
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </span>
+              </ShimmerButton>
 
               {/* Secondary Button */}
               <button
@@ -389,42 +542,6 @@ const Hero = () => {
                   />
                 </svg>
               </button>
-            </div>
-
-            {/* Dynamic Stats */}
-            <div className="mt-12 grid grid-cols-3 gap-6">
-              {stats.map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group relative overflow-hidden rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 p-4 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-                    onMouseEnter={(e) => {
-                      gsap.to(e.currentTarget, { scale: 1.05, duration: 0.3 });
-                    }}
-                    onMouseLeave={(e) => {
-                      gsap.to(e.currentTarget, { scale: 1, duration: 0.3 });
-                    }}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-r from-purple-primary/20 to-purple-secondary/20">
-                        <IconComponent className="w-5 h-5 text-purple-primary" />
-                      </div>
-                      <div>
-                        <div className="text-xl font-bold text-white">
-                          {stat.number}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Hover effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-primary/10 to-purple-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                );
-              })}
             </div>
 
             {/* Scroll indicator */}

@@ -46,6 +46,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Shimmer animation for buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
 /* Custom gradient backgrounds */
 .gradient-bg-main {
   background: linear-gradient(
