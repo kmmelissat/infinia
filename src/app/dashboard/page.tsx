@@ -8,6 +8,8 @@ import IncomeExpenseChart from "@/components/Dashboard/IncomeExpenseChart";
 import MeetingsWidget from "@/components/Dashboard/MeetingsWidget";
 import InvoiceOverview from "@/components/Dashboard/InvoiceOverview";
 import OpenTickets from "@/components/Dashboard/OpenTickets";
+import ExecutiveView from "@/components/Dashboard/ExecutiveView/ExecutiveView";
+import DeliveryTimeline from "@/components/Dashboard/DeliveryTimeline/DeliveryTimeline";
 
 const Dashboard = () => {
   return (
@@ -53,24 +55,44 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-12 gap-6">
-          {/* Left Column */}
-          <div className="col-span-4 space-y-6">
-            <TasksWidget />
-            <InvoiceOverview />
+        {/* Executive View */}
+        <ExecutiveView />
+
+        {/* Divider */}
+        <div className="border-t border-dashboard-border my-8"></div>
+
+        {/* Delivery & Timeline */}
+        <DeliveryTimeline />
+
+        {/* Divider */}
+        <div className="border-t border-dashboard-border my-8"></div>
+
+        {/* Dashboard Grid - Widgets Originales */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold text-dashboard-text-primary">
+              Widgets Operacionales
+            </h2>
           </div>
 
-          {/* Middle Column */}
-          <div className="col-span-4 space-y-6">
-            <ProjectsOverview />
-            <IncomeExpenseChart />
-          </div>
+          <div className="grid grid-cols-12 gap-6">
+            {/* Left Column */}
+            <div className="col-span-4 space-y-6">
+              <TasksWidget />
+              <InvoiceOverview />
+            </div>
 
-          {/* Right Column */}
-          <div className="col-span-4 space-y-6">
-            <MeetingsWidget />
-            <OpenTickets />
+            {/* Middle Column */}
+            <div className="col-span-4 space-y-6">
+              <ProjectsOverview />
+              <IncomeExpenseChart />
+            </div>
+
+            {/* Right Column */}
+            <div className="col-span-4 space-y-6">
+              <MeetingsWidget />
+              <OpenTickets />
+            </div>
           </div>
         </div>
       </div>
