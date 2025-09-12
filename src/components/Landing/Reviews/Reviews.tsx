@@ -164,84 +164,218 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className={`group backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 ${
+              className={`group relative backdrop-blur-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-8 hover:bg-gradient-to-br hover:from-white/15 hover:via-white/10 hover:to-white/5 hover:border-white/30 transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/30 overflow-hidden ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"
               }`}
               style={{ transitionDelay: `${600 + index * 100}ms` }}
             >
-              {/* Rating Stars */}
+              {/* Decorative Quote Icon */}
+              <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                <svg
+                  className="w-12 h-12 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+                </svg>
+              </div>
+
+              {/* Gradient Border Effect */}
+              <div
+                className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${review.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}
+              ></div>
+              <div
+                className={`absolute inset-[1px] rounded-3xl bg-gradient-to-br from-black/80 via-black/60 to-black/80 -z-10`}
+              ></div>
+
+              {/* Rating Stars with Animation */}
               <div className="flex space-x-1 mb-6">
                 {[...Array(review.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-xl">
-                    ⭐
-                  </span>
+                  <div
+                    key={i}
+                    className="relative"
+                    style={{ animationDelay: `${i * 100}ms` }}
+                  >
+                    <span className="text-yellow-400 text-xl group-hover:scale-110 transition-transform duration-300 inline-block">
+                      ⭐
+                    </span>
+                    <div className="absolute inset-0 text-yellow-300 text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse">
+                      ⭐
+                    </div>
+                  </div>
                 ))}
               </div>
 
-              {/* Review Text */}
-              <p className="text-gray-300 leading-relaxed mb-8 group-hover:text-white transition-colors duration-300">
-                &ldquo;{review.review}&rdquo;
-              </p>
+              {/* Review Text with Better Typography */}
+              <div className="relative mb-8">
+                <p className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-300 relative z-10">
+                  <span className="text-3xl text-purple-light/50 absolute -top-2 -left-2">
+                    "
+                  </span>
+                  <span className="ml-4">{review.review}</span>
+                  <span className="text-3xl text-purple-light/50 ml-1">"</span>
+                </p>
 
-              {/* Reviewer Info */}
-              <div className="flex items-center space-x-4">
+                {/* Animated underline */}
                 <div
-                  className={`w-12 h-12 bg-gradient-to-r ${review.gradient} rounded-full flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {review.avatar}
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r ${review.gradient} w-0 group-hover:w-full transition-all duration-700 ease-out`}
+                ></div>
+              </div>
+
+              {/* Enhanced Reviewer Info */}
+              <div className="flex items-center space-x-4 relative z-10">
+                <div className="relative">
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-r ${review.gradient} rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-all duration-300 shadow-lg`}
+                  >
+                    {review.avatar}
+                  </div>
+                  {/* Pulsing ring effect */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${review.gradient} rounded-2xl opacity-0 group-hover:opacity-30 animate-ping`}
+                  ></div>
                 </div>
-                <div>
-                  <h4 className="text-white font-semibold group-hover:text-purple-light transition-colors duration-300">
+
+                <div className="flex-1">
+                  <h4 className="text-white font-bold text-lg group-hover:text-purple-light transition-colors duration-300 mb-1">
                     {review.name}
                   </h4>
-                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300 mb-1">
                     {review.role}
                   </p>
-                  <p className="text-purple-light text-sm font-medium">
-                    {review.company}
-                  </p>
+                  <div className="flex items-center space-x-2">
+                    <div
+                      className={`w-2 h-2 bg-gradient-to-r ${review.gradient} rounded-full`}
+                    ></div>
+                    <p className="text-purple-light text-sm font-semibold">
+                      {review.company}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Hover Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-primary/0 via-purple-primary/5 to-purple-primary/0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Floating particles effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+                <div
+                  className="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-bounce"
+                  style={{ animationDelay: "0.5s" }}
+                ></div>
+                <div
+                  className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-bounce"
+                  style={{ animationDelay: "1s" }}
+                ></div>
+                <div
+                  className="absolute bottom-1/4 left-3/4 w-1.5 h-1.5 bg-pink-400/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-bounce"
+                  style={{ animationDelay: "0.7s" }}
+                ></div>
+              </div>
+
+              {/* Enhanced Hover Glow Effect */}
+              <div
+                className={`absolute -inset-1 bg-gradient-to-r ${review.gradient} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 -z-20`}
+              ></div>
             </div>
           ))}
         </div>
 
-        {/* Trust Indicators */}
+        {/* Enhanced Trust Indicators */}
         <div
           className={`mt-20 text-center transition-all duration-1000 delay-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {[
-              { metric: "4.9/5", label: "Calificación Promedio" },
-              { metric: "98%", label: "Satisfacción del Cliente" },
-              { metric: "50+", label: "Clientes Satisfechos" },
-              { metric: "100%", label: "Tasa de Éxito en Proyectos" },
+              {
+                metric: "4.9/5",
+                label: "Calificación Promedio",
+                icon: "⭐",
+                gradient: "from-yellow-400 to-orange-500",
+              },
+              {
+                metric: "98%",
+                label: "Satisfacción del Cliente",
+                icon: "😊",
+                gradient: "from-green-400 to-emerald-500",
+              },
+              {
+                metric: "50+",
+                label: "Clientes Satisfechos",
+                icon: "🤝",
+                gradient: "from-blue-400 to-cyan-500",
+              },
+              {
+                metric: "100%",
+                label: "Tasa de Éxito en Proyectos",
+                icon: "🎯",
+                gradient: "from-purple-400 to-pink-500",
+              },
             ].map((stat, index) => (
-              <div key={index} className="group">
-                <div className="text-3xl font-black gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div
+                key={index}
+                className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Icon */}
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                  {stat.icon}
+                </div>
+
+                {/* Metric */}
+                <div
+                  className={`text-4xl font-black bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300`}
+                >
                   {stat.metric}
                 </div>
-                <div className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+
+                {/* Label */}
+                <div className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">
                   {stat.label}
                 </div>
+
+                {/* Hover glow effect */}
+                <div
+                  className={`absolute -inset-0.5 bg-gradient-to-r ${stat.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-sm transition-all duration-500 -z-10`}
+                ></div>
               </div>
             ))}
           </div>
 
-          <p className="text-gray-300 mb-6">
-            ¿Listo para unirte a nuestros clientes satisfechos?
-          </p>
-          <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <span className="relative z-10">Inicia Tu Proyecto</span>
-          </button>
+          {/* CTA Section */}
+          <div className="relative backdrop-blur-xl bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 rounded-3xl p-8 max-w-2xl mx-auto">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-primary/10 via-transparent to-purple-secondary/10 rounded-3xl"></div>
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                ¿Listo para unirte a nuestros clientes satisfechos?
+              </h3>
+              <p className="text-gray-300 mb-8">
+                Únete a más de 50 empresas que han transformado su negocio con
+                Infinia
+              </p>
+
+              <button className="group relative bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-primary/40 hover:shadow-purple-primary/60 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                <span className="relative z-10 flex items-center space-x-2">
+                  <span>Inicia Tu Proyecto</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    →
+                  </span>
+                </span>
+              </button>
+            </div>
+
+            {/* Floating elements */}
+            <div className="absolute top-4 right-4 w-2 h-2 bg-purple-400/50 rounded-full animate-pulse"></div>
+            <div
+              className="absolute bottom-4 left-4 w-1 h-1 bg-blue-400/50 rounded-full animate-pulse"
+              style={{ animationDelay: "1s" }}
+            ></div>
+          </div>
         </div>
       </div>
     </section>
