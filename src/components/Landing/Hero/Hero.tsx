@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
 import TechHub from "./components/TechHub";
+import ChatAssistant from "@/components/ChatAssistant/ChatAssistant";
 import { ChevronDownIcon, PlayIcon } from "@heroicons/react/24/outline";
 // Custom React Bits-inspired components
 const AnimatedCounter = ({
@@ -438,13 +439,8 @@ const Hero = () => {
         }}
       />
 
-      {/* Floating Action Button */}
-      <div className="fixed bottom-8 right-8 z-40">
-        <button className="group relative w-14 h-14 bg-gradient-to-r from-purple-primary to-purple-secondary rounded-full shadow-lg shadow-purple-primary/25 hover:shadow-purple-primary/40 transition-all duration-300 flex items-center justify-center">
-          <PlayIcon className="w-6 h-6 text-white ml-1 transition-transform group-hover:scale-110" />
-          <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </button>
-      </div>
+      {/* Chat Assistant */}
+      <ChatAssistant />
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
