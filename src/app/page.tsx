@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Landing/Hero/Hero";
 import Features from "@/components/Landing/Features/Features";
 import Services from "@/components/Landing/Services/Services";
+import OurWork from "@/components/Landing/OurWork/OurWork";
 import TechStack from "@/components/Landing/TechStack/TechStack";
 import Reviews from "@/components/Landing/Reviews/Reviews";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Services />
+      <OurWork />
       <TechStack />
       <Reviews />
     </div>
