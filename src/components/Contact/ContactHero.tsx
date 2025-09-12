@@ -2,11 +2,29 @@
 
 import { useState, useEffect } from "react";
 
+interface Particle {
+  left: string;
+  top: string;
+  animationDelay: string;
+  animationDuration: string;
+}
+
 const ContactHero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
     setIsVisible(true);
+
+    // Generate particles on client side to avoid hydration mismatch
+    const generatedParticles = [...Array(20)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      animationDelay: `${Math.random() * 3}s`,
+      animationDuration: `${2 + Math.random() * 2}s`,
+    }));
+
+    setParticles(generatedParticles);
   }, []);
 
   return (
@@ -25,15 +43,15 @@ const ContactHero = () => {
 
         {/* Floating particles */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-purple-primary/30 rounded-full animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
+                left: particle.left,
+                top: particle.top,
+                animationDelay: particle.animationDelay,
+                animationDuration: particle.animationDuration,
               }}
             ></div>
           ))}

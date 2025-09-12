@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Logo from "../Logo/Logo";
 
 const Navbar = () => {
@@ -35,7 +36,12 @@ const Navbar = () => {
         <div className="px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Logo size="md" showText={true} />
+            <Link
+              href="/"
+              className="transition-transform duration-300 hover:scale-105"
+            >
+              <Logo size="md" showText={true} />
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-10">
@@ -53,12 +59,12 @@ const Navbar = () => {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center space-x-6">
-              <a
+              <Link
                 href="/contact"
                 className="text-gray-300 hover:text-white transition-all duration-300 px-5 py-2.5 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20"
               >
                 Contacto
-              </a>
+              </Link>
               <button className="bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-primary/30 hover:shadow-purple-primary/50 border border-purple-primary/20">
                 Comenzar Proyecto
               </button>
@@ -110,13 +116,13 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-white/20 space-y-3">
-                <a
+                <Link
                   href="/contact"
                   className="block w-full text-center text-gray-300 hover:text-white transition-all duration-300 py-3 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Contacto
-                </a>
+                </Link>
                 <button className="w-full bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white py-3 rounded-full font-medium transition-all duration-300 shadow-lg shadow-purple-primary/30 border border-purple-primary/20">
                   Comenzar Proyecto
                 </button>

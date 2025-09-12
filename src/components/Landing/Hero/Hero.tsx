@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
@@ -512,7 +513,8 @@ const Hero = () => {
               </ShimmerButton>
 
               {/* Secondary Button */}
-              <button
+              <Link
+                href="/dashboard"
                 className="group relative backdrop-blur-md bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/30 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center space-x-3"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, { scale: 1.02, duration: 0.3 });
@@ -541,7 +543,7 @@ const Hero = () => {
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                   />
                 </svg>
-              </button>
+              </Link>
             </div>
 
             {/* Scroll indicator */}

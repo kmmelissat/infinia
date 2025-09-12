@@ -178,15 +178,31 @@ const OurWork = () => {
 
         {/* Floating particles */}
         <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
+          {[
+            { left: 25.3, top: 18.7, delay: 0.4, duration: 2.8 },
+            { left: 72.1, top: 64.2, delay: 1.6, duration: 3.4 },
+            { left: 48.9, top: 29.5, delay: 2.1, duration: 2.3 },
+            { left: 83.7, top: 76.8, delay: 0.8, duration: 3.7 },
+            { left: 14.2, top: 52.1, delay: 1.3, duration: 2.6 },
+            { left: 61.5, top: 37.9, delay: 2.7, duration: 3.1 },
+            { left: 92.4, top: 83.3, delay: 0.2, duration: 2.9 },
+            { left: 37.8, top: 15.6, delay: 1.9, duration: 3.5 },
+            { left: 69.2, top: 71.4, delay: 2.4, duration: 2.2 },
+            { left: 18.6, top: 45.8, delay: 0.6, duration: 3.8 },
+            { left: 76.3, top: 92.1, delay: 1.7, duration: 2.7 },
+            { left: 43.1, top: 26.3, delay: 2.2, duration: 3.2 },
+            { left: 87.9, top: 58.7, delay: 0.9, duration: 2.4 },
+            { left: 29.4, top: 79.2, delay: 1.4, duration: 3.6 },
+            { left: 64.7, top: 41.5, delay: 2.8, duration: 2.5 },
+          ].map((particle, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-purple-primary/30 rounded-full animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                animationDelay: `${particle.delay}s`,
+                animationDuration: `${particle.duration}s`,
               }}
             ></div>
           ))}

@@ -326,15 +326,36 @@ const Services = () => {
 
         {/* Floating particles */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {[
+            { left: 15.2, top: 23.4, delay: 0.5, duration: 3.2 },
+            { left: 78.9, top: 67.1, delay: 1.8, duration: 2.7 },
+            { left: 45.6, top: 12.8, delay: 2.3, duration: 3.8 },
+            { left: 89.3, top: 89.5, delay: 0.9, duration: 2.1 },
+            { left: 23.7, top: 56.2, delay: 1.4, duration: 3.5 },
+            { left: 67.4, top: 34.9, delay: 2.7, duration: 2.9 },
+            { left: 91.8, top: 78.3, delay: 0.3, duration: 3.1 },
+            { left: 12.5, top: 91.7, delay: 1.9, duration: 2.4 },
+            { left: 56.1, top: 45.6, delay: 2.1, duration: 3.6 },
+            { left: 34.8, top: 19.2, delay: 0.7, duration: 2.8 },
+            { left: 82.3, top: 63.4, delay: 1.6, duration: 3.3 },
+            { left: 19.7, top: 87.1, delay: 2.5, duration: 2.2 },
+            { left: 73.2, top: 28.7, delay: 0.1, duration: 3.7 },
+            { left: 41.9, top: 74.5, delay: 1.2, duration: 2.6 },
+            { left: 65.4, top: 52.3, delay: 2.9, duration: 3.4 },
+            { left: 28.6, top: 16.8, delay: 0.6, duration: 2.3 },
+            { left: 87.1, top: 41.2, delay: 1.7, duration: 3.9 },
+            { left: 52.8, top: 83.6, delay: 2.4, duration: 2.5 },
+            { left: 16.3, top: 69.9, delay: 0.8, duration: 3.2 },
+            { left: 74.7, top: 37.4, delay: 1.3, duration: 2.7 },
+          ].map((particle, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-purple-primary/20 rounded-full animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                animationDelay: `${particle.delay}s`,
+                animationDuration: `${particle.duration}s`,
               }}
             ></div>
           ))}
