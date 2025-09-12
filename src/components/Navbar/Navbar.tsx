@@ -53,9 +53,12 @@ const Navbar = () => {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center space-x-6">
-              <button className="text-gray-300 hover:text-white transition-all duration-300 px-5 py-2.5 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20">
+              <a
+                href="/contact"
+                className="text-gray-300 hover:text-white transition-all duration-300 px-5 py-2.5 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20"
+              >
                 Contacto
-              </button>
+              </a>
               <button className="bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-primary/30 hover:shadow-purple-primary/50 border border-purple-primary/20">
                 Comenzar Proyecto
               </button>
@@ -107,9 +110,13 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-white/20 space-y-3">
-                <button className="w-full text-gray-300 hover:text-white transition-all duration-300 py-3 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10">
+                <a
+                  href="/contact"
+                  className="block w-full text-center text-gray-300 hover:text-white transition-all duration-300 py-3 rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   Contacto
-                </button>
+                </a>
                 <button className="w-full bg-gradient-to-r from-purple-primary to-purple-secondary hover:from-purple-secondary hover:to-purple-dark text-white py-3 rounded-full font-medium transition-all duration-300 shadow-lg shadow-purple-primary/30 border border-purple-primary/20">
                   Comenzar Proyecto
                 </button>
