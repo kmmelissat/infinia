@@ -13,6 +13,7 @@ import {
   CubeIcon,
   QuestionMarkCircleIcon,
   Cog6ToothIcon,
+  ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/outline";
 
 const Sidebar = () => {
@@ -36,6 +37,12 @@ const Sidebar = () => {
       href: "/dashboard/team",
       title: "Equipo",
       active: pathname === "/dashboard/team",
+    },
+    {
+      icon: ChatBubbleLeftRightIcon,
+      href: "/dashboard/communication",
+      title: "Comunicación",
+      active: pathname === "/dashboard/communication",
     },
     {
       icon: DocumentTextIcon,

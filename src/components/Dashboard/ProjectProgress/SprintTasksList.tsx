@@ -9,8 +9,10 @@ import {
   ExclamationTriangleIcon,
   UserIcon,
   CalendarIcon,
+  ChatBubbleLeftIcon,
 } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleSolidIcon } from "@heroicons/react/24/solid";
+import TaskComments from "../Communication/TaskComments";
 
 interface Task {
   id: string;
@@ -39,6 +41,8 @@ interface Sprint {
 const SprintTasksList = () => {
   const [selectedSprint, setSelectedSprint] = useState("sprint-4");
   const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [selectedTaskForComments, setSelectedTaskForComments] =
+    useState<Task | null>(null);
 
   const sprints: Sprint[] = [
     {
@@ -49,10 +53,10 @@ const SprintTasksList = () => {
       status: "active",
       tasks: [
         {
-          id: "US-001",
-          title: "Implementar autenticación de usuarios",
+          id: "GS-001",
+          title: "Sistema de autenticación y registro",
           description:
-            "Como usuario, quiero poder iniciar sesión de forma segura",
+            "Como gamer, quiero crear una cuenta y acceder de forma segura a GameShop",
           status: "done",
           priority: "high",
           assignee: "Ana García",
@@ -60,59 +64,63 @@ const SprintTasksList = () => {
           startDate: "2024-01-15",
           dueDate: "2024-01-20",
           completedDate: "2024-01-19",
-          tags: ["backend", "security"],
+          tags: ["auth", "security", "backend"],
           sprint: "sprint-4",
         },
         {
-          id: "US-002",
-          title: "Dashboard de métricas en tiempo real",
-          description: "Como PM, quiero ver métricas del proyecto actualizadas",
+          id: "GS-002",
+          title: "Catálogo de videojuegos con filtros",
+          description:
+            "Como gamer, quiero explorar y filtrar videojuegos por género, precio y plataforma",
           status: "in-progress",
           priority: "high",
           assignee: "Carlos López",
           storyPoints: 13,
           startDate: "2024-01-16",
           dueDate: "2024-01-25",
-          tags: ["frontend", "charts"],
+          tags: ["frontend", "catalog", "filters"],
           sprint: "sprint-4",
         },
         {
-          id: "US-003",
-          title: "Integración con API de pagos",
-          description: "Como usuario, quiero poder realizar pagos seguros",
+          id: "GS-003",
+          title: "Carrito de compras y checkout",
+          description:
+            "Como gamer, quiero agregar juegos al carrito y completar mi compra",
           status: "review",
           priority: "critical",
           assignee: "María Rodríguez",
           storyPoints: 21,
           startDate: "2024-01-18",
           dueDate: "2024-01-28",
-          tags: ["backend", "payments", "integration"],
+          tags: ["ecommerce", "cart", "checkout"],
           sprint: "sprint-4",
         },
         {
-          id: "US-004",
-          title: "Optimización de rendimiento",
-          description: "Como usuario, quiero que la app cargue más rápido",
+          id: "GS-004",
+          title: "Integración con pasarelas de pago",
+          description:
+            "Como gamer, quiero pagar con tarjeta, PayPal o criptomonedas",
           status: "blocked",
-          priority: "medium",
+          priority: "critical",
           assignee: "David Chen",
-          storyPoints: 5,
+          storyPoints: 13,
           startDate: "2024-01-20",
           dueDate: "2024-01-27",
-          tags: ["performance", "optimization"],
+          tags: ["payments", "stripe", "paypal"],
           sprint: "sprint-4",
         },
         {
-          id: "US-005",
-          title: "Tests automatizados E2E",
-          description: "Como QA, quiero tests que validen flujos completos",
+          id: "GS-005",
+          title: "Sistema de reseñas y calificaciones",
+          description:
+            "Como gamer, quiero leer y escribir reseñas de videojuegos",
           status: "todo",
           priority: "medium",
           assignee: "Elena Martín",
           storyPoints: 8,
           startDate: "2024-01-22",
           dueDate: "2024-01-29",
-          tags: ["testing", "qa", "automation"],
+          tags: ["reviews", "ratings", "community"],
           sprint: "sprint-4",
         },
       ],
@@ -125,17 +133,18 @@ const SprintTasksList = () => {
       status: "completed",
       tasks: [
         {
-          id: "US-006",
-          title: "Setup inicial del proyecto",
-          description: "Configurar estructura base y herramientas",
+          id: "GS-000",
+          title: "Setup inicial GameShop Ecommerce",
+          description:
+            "Configurar arquitectura base, base de datos y herramientas para el ecommerce",
           status: "done",
           priority: "high",
           assignee: "Tech Lead",
-          storyPoints: 5,
+          storyPoints: 8,
           startDate: "2024-01-01",
           dueDate: "2024-01-05",
           completedDate: "2024-01-04",
-          tags: ["setup", "infrastructure"],
+          tags: ["setup", "infrastructure", "ecommerce"],
           sprint: "sprint-3",
         },
       ],
@@ -371,15 +380,25 @@ const SprintTasksList = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2 mt-2">
-                    {task.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-gray-100 text-xs rounded-full text-dashboard-text-secondary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center space-x-2">
+                      {task.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-gray-100 text-xs rounded-full text-dashboard-text-secondary"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => setSelectedTaskForComments(task)}
+                      className="flex items-center space-x-1 px-2 py-1 text-xs text-dashboard-text-secondary hover:text-purple-primary hover:bg-purple-50 rounded-lg transition-colors"
+                      title="Ver comentarios"
+                    >
+                      <ChatBubbleLeftIcon className="w-3 h-3" />
+                      <span>Comentarios</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -402,6 +421,16 @@ const SprintTasksList = () => {
         <div className="text-center py-8 text-dashboard-text-secondary">
           No hay tareas que coincidan con el filtro seleccionado
         </div>
+      )}
+
+      {/* Task Comments Modal */}
+      {selectedTaskForComments && (
+        <TaskComments
+          taskId={selectedTaskForComments.id}
+          taskTitle={selectedTaskForComments.title}
+          isOpen={!!selectedTaskForComments}
+          onClose={() => setSelectedTaskForComments(null)}
+        />
       )}
     </div>
   );
