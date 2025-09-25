@@ -276,20 +276,11 @@ const ProjectChat = () => {
   const currentChannel = channels.find((c) => c.id === selectedChannel);
 
   return (
-    <div className="bg-dashboard-card rounded-2xl shadow-sm border border-dashboard-border overflow-hidden h-[600px] flex">
+    <div className="bg-dashboard-card rounded-2xl shadow-sm border border-dashboard-border overflow-hidden h-[calc(100vh-140px)] flex">
       {/* Channels Sidebar */}
-      <div className="w-80 bg-gray-50 border-r border-dashboard-border flex flex-col">
+      <div className="w-72 bg-gray-50 border-r border-dashboard-border flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-dashboard-border">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-dashboard-text-primary flex items-center">
-              <ChatBubbleLeftRightIcon className="w-5 h-5 mr-2" />
-              Comunicación
-            </h3>
-            <button className="text-dashboard-text-secondary hover:text-dashboard-text-primary">
-              <MagnifyingGlassIcon className="w-4 h-4" />
-            </button>
-          </div>
+        <div className="p-3 border-b border-dashboard-border">
           <div className="relative">
             <input
               type="text"
@@ -341,17 +332,17 @@ const ProjectChat = () => {
         {/* Online Users */}
         <div className="p-3 border-t border-dashboard-border">
           <div className="text-xs font-semibold text-dashboard-text-secondary uppercase tracking-wider mb-2">
-            Participantes ({users.filter((u) => u.isOnline).length} en línea)
+            {users.filter((u) => u.isOnline).length} en línea
           </div>
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             {users.map((user) => (
               <div key={user.id} className="flex items-center space-x-2">
                 <div className="relative">
-                  <div className="w-6 h-6 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
-                    <UserIcon className="w-3 h-3 text-white" />
+                  <div className="w-5 h-5 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
+                    <UserIcon className="w-2.5 h-2.5 text-white" />
                   </div>
                   {user.isOnline && (
-                    <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border border-white"></div>
+                    <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-green-500 rounded-full border border-white"></div>
                   )}
                 </div>
                 <div className="flex-1 min-w-0">

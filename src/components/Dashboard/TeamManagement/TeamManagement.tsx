@@ -4,117 +4,9 @@ import React, { useState } from "react";
 import TeamMemberCard from "./TeamMemberCard";
 import MeetingScheduler from "./MeetingScheduler";
 import TeamStats from "./TeamStats";
+import { infiniaTeamMembers, type TeamMember } from "../../../data/teamData";
 
-// Team member interface
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  email: string;
-  phone: string;
-  avatar: string;
-  status: "online" | "busy" | "away";
-  department: string;
-  skills: string[];
-  availability: string;
-  
-  timezone: string;
-  workingHours: string;
-}
-
-// Mock data for team members
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: "Ana García",
-    role: "Project Manager",
-    email: "ana.garcia@infinia.com",
-    phone: "+1 (555) 123-4567",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    status: "online" as const,
-    department: "Management",
-    skills: ["Agile", "Scrum", "Leadership"],
-    availability: "Available",
-    timezone: "GMT-5",
-    workingHours: "9:00 AM - 6:00 PM",
-  },
-  {
-    id: 2,
-    name: "Carlos Rodríguez",
-    role: "Senior Developer",
-    email: "carlos.rodriguez@infinia.com",
-    phone: "+1 (555) 234-5678",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    status: "online" as const,
-    department: "Development",
-    skills: ["React", "Node.js", "TypeScript"],
-    availability: "Available",
-    timezone: "GMT-5",
-    workingHours: "10:00 AM - 7:00 PM",
-  },
-  {
-    id: 3,
-    name: "María López",
-    role: "UX/UI Designer",
-    email: "maria.lopez@infinia.com",
-    phone: "+1 (555) 345-6789",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    status: "busy" as const,
-    department: "Design",
-    skills: ["Figma", "Adobe XD", "User Research"],
-    availability: "In Meeting",
-    timezone: "GMT-5",
-    workingHours: "9:00 AM - 5:00 PM",
-  },
-  {
-    id: 4,
-    name: "David Chen",
-    role: "DevOps Engineer",
-    email: "david.chen@infinia.com",
-    phone: "+1 (555) 456-7890",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    status: "away" as const,
-    department: "Infrastructure",
-    skills: ["AWS", "Docker", "Kubernetes"],
-    availability: "Away",
-    timezone: "GMT-8",
-    workingHours: "8:00 AM - 4:00 PM",
-  },
-  {
-    id: 5,
-    name: "Sophie Martin",
-    role: "QA Engineer",
-    email: "sophie.martin@infinia.com",
-    phone: "+1 (555) 567-8901",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-    status: "online" as const,
-    department: "Quality Assurance",
-    skills: ["Selenium", "Jest", "Manual Testing"],
-    availability: "Available",
-    timezone: "GMT+1",
-    workingHours: "8:00 AM - 4:00 PM",
-  },
-  {
-    id: 6,
-    name: "Roberto Silva",
-    role: "Backend Developer",
-    email: "roberto.silva@infinia.com",
-    phone: "+1 (555) 678-9012",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-    status: "online" as const,
-    department: "Development",
-    skills: ["Python", "Django", "PostgreSQL"],
-    availability: "Available",
-    timezone: "GMT-3",
-    workingHours: "9:00 AM - 6:00 PM",
-  },
-];
+// Using shared Infinia team data
 
 const TeamManagement = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -132,7 +24,7 @@ const TeamManagement = () => {
   ];
   const statuses = ["all", "online", "busy", "away"];
 
-  const filteredMembers = teamMembers.filter((member) => {
+  const filteredMembers = infiniaTeamMembers.filter((member) => {
     const departmentMatch =
       filterDepartment === "all" || member.department === filterDepartment;
     const statusMatch =
@@ -148,7 +40,7 @@ const TeamManagement = () => {
   return (
     <div className="space-y-8">
       {/* Team Stats */}
-      <TeamStats teamMembers={teamMembers} />
+      <TeamStats teamMembers={infiniaTeamMembers} />
 
       {/* Filters */}
       <div className="bg-dashboard-card rounded-lg p-6 border border-dashboard-border">

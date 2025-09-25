@@ -9,21 +9,7 @@ import {
   MapPinIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
-
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  email: string;
-  phone: string;
-  avatar: string;
-  status: "online" | "busy" | "away";
-  department: string;
-  skills: string[];
-  availability: string;
-  timezone: string;
-  workingHours: string;
-}
+import { type TeamMember } from "../../../data/teamData";
 
 interface TeamMemberCardProps {
   member: TeamMember;
