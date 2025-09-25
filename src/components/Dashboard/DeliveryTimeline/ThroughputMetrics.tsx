@@ -2,12 +2,10 @@
 
 import React from "react";
 import {
-  BarChart,
   Bar,
   XAxis,
   YAxis,
   CartesianGrid,
-  LineChart,
   Line,
   ComposedChart,
 } from "recharts";
@@ -239,11 +237,12 @@ const ThroughputMetrics = () => {
       <div className="mt-4 p-3 bg-gray-50 rounded-lg">
         <div className="text-xs text-dashboard-text-secondary space-y-1">
           <div>
-            <strong>Cycle Time:</strong> Tiempo desde "In Progress" hasta "Done"
+            <strong>Cycle Time:</strong> Tiempo desde &quot;In Progress&quot;
+            hasta &quot;Done&quot;
           </div>
           <div>
-            <strong>Lead Time:</strong> Tiempo desde "Request" hasta
-            "Production"
+            <strong>Lead Time:</strong> Tiempo desde &quot;Request&quot; hasta
+            &quot;Production&quot;
           </div>
         </div>
       </div>

@@ -212,10 +212,12 @@ const Reviews = () => {
               <div className="relative mb-8">
                 <p className="text-gray-200 leading-relaxed text-lg group-hover:text-white transition-colors duration-300 relative z-10">
                   <span className="text-3xl text-purple-light/50 absolute -top-2 -left-2">
-                    "
+                    &quot;
                   </span>
                   <span className="ml-4">{review.review}</span>
-                  <span className="text-3xl text-purple-light/50 ml-1">"</span>
+                  <span className="text-3xl text-purple-light/50 ml-1">
+                    &quot;
+                  </span>
                 </p>
 
                 {/* Animated underline */}

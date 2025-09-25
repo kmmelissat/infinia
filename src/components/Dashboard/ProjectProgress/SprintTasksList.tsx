@@ -208,24 +208,31 @@ const SprintTasksList = () => {
       (task) => filterStatus === "all" || task.status === filterStatus
     ) || [];
 
-  const taskStats =
-    currentSprint?.tasks.reduce(
-      (acc, task) => {
-        acc[task.status] = (acc[task.status] || 0) + 1;
-        acc.totalPoints += task.storyPoints;
-        if (task.status === "done") acc.completedPoints += task.storyPoints;
-        return acc;
-      },
-      {
-        todo: 0,
-        "in-progress": 0,
-        review: 0,
-        done: 0,
-        blocked: 0,
-        totalPoints: 0,
-        completedPoints: 0,
-      }
-    ) || {};
+  const taskStats = currentSprint?.tasks.reduce(
+    (acc, task) => {
+      acc[task.status] = (acc[task.status] || 0) + 1;
+      acc.totalPoints += task.storyPoints;
+      if (task.status === "done") acc.completedPoints += task.storyPoints;
+      return acc;
+    },
+    {
+      todo: 0,
+      "in-progress": 0,
+      review: 0,
+      done: 0,
+      blocked: 0,
+      totalPoints: 0,
+      completedPoints: 0,
+    }
+  ) || {
+    todo: 0,
+    "in-progress": 0,
+    review: 0,
+    done: 0,
+    blocked: 0,
+    totalPoints: 0,
+    completedPoints: 0,
+  };
 
   const completionPercentage =
     taskStats.totalPoints > 0

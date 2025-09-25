@@ -17,6 +17,7 @@ interface TeamMember {
   department: string;
   skills: string[];
   availability: string;
+  
   timezone: string;
   workingHours: string;
 }

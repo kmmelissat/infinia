@@ -7,45 +7,8 @@ import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
 import TechHub from "./components/TechHub";
 import ChatAssistant from "@/components/ChatAssistant/ChatAssistant";
-import { ChevronDownIcon, PlayIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 // Custom React Bits-inspired components
-const AnimatedCounter = ({
-  value,
-  duration = 2000,
-  suffix = "",
-}: {
-  value: number;
-  duration?: number;
-  suffix?: string;
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const end = value;
-    const increment = end / (duration / 16);
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [value, duration]);
-
-  return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  );
-};
-
 const GradientText = ({
   children,
   colors,
@@ -151,37 +114,10 @@ const ShimmerButton = ({
   );
 };
 
-const InteractiveCard = ({
-  children,
-  className = "",
-  hoverEffect = "glow",
-  glowColor = "#8b5cf6",
-}: {
-  children: React.ReactNode;
-  className?: string;
-  hoverEffect?: string;
-  glowColor?: string;
-}) => {
-  return (
-    <div
-      className={`group relative transition-all duration-300 hover:scale-105 ${className}`}
-    >
-      {children}
-      <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-        style={{ backgroundColor: glowColor + "20" }}
-      ></div>
-    </div>
-  );
-};
-
 // Register GSAP plugins
 gsap.registerPlugin(TextPlugin);
 
 const Hero = () => {
-  const [currentTagline, setCurrentTagline] = useState(0);
-  const [currentWord, setCurrentWord] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
 
@@ -190,12 +126,6 @@ const Hero = () => {
   const ctaRef = useRef<HTMLDivElement>(null);
   const techStackRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
-  const typewriterRef = useRef<HTMLSpanElement>(null);
-
-  const taglines = [
-    "Donde la innovación no tiene límites.",
-    "Construimos el futuro, una línea de código a la vez.",
-  ];
 
   const dynamicWords = [
     "ideas",
@@ -298,15 +228,6 @@ const Hero = () => {
       );
     }
   }, []);
-
-  // Typewriter effect for dynamic words
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % dynamicWords.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [dynamicWords.length]);
 
   // Mouse tracking for interactive elements
   useEffect(() => {
